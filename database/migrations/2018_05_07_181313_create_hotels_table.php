@@ -13,8 +13,15 @@ class CreateHotelsTable extends Migration
      */
     public function up()
     {
+        //TODO fix this blasphemy :P
         Schema::create('hotels', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name')->nullable();
+            $table->integer('sixbeds')->default(0);
+            $table->integer('fivebeds')->default(0);
+            $table->integer('fourbeds')->default(0);
+            $table->integer('threebeds')->default(0);
+            $table->integer('twobeds')->default(0);
             $table->timestamps();
         });
     }

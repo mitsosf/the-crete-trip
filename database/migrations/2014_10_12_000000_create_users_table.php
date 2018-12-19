@@ -42,6 +42,7 @@ class CreateUsersTable extends Migration
             $table->dateTime('ticketsdate')->nullable();
             $table->string('rooming')->default('No')->nullable();
             $table->string('roomingcomments')->default("")->nullable();
+            $table->string('checkin')->default("No")->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

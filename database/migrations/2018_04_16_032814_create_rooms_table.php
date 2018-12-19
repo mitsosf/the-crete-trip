@@ -21,6 +21,7 @@ class CreateRoomsTable extends Migration
             $table->string('final');
             $table->string('comments');
             $table->string('actual');
+            $table->unsignedInteger('first_id')->nullable();
             $table->timestamps();
         });
     }
