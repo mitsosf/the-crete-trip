@@ -14,6 +14,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
+        $this->call('EventTableSeeder');
+        $this->command->info('Seeded the event!');
+
         $this->call('SectionsTableSeeder');
         $this->command->info('Seeded the countries!');
 
@@ -25,6 +28,45 @@ class DatabaseSeeder extends Seeder
     }
 }
 
+class EventTableSeeder extends Seeder
+{
+
+    public function run()
+    {
+        DB::table('event')->delete();
+
+        $attributes = array(
+            array(
+                'attribute' => 'fee',
+                'value' => '0'
+
+            ),
+            array(
+                'attribute' => 'boat',
+                'value' => '0'
+
+            ),
+            array(
+                'attribute' => 'reducedfee',
+                'value' => '0'
+
+            ),
+            array(
+                'attribute' => 'maxBeds',
+                'value' => '0'
+
+            ),
+            array(
+                'attribute' => 'rooming',
+                'value' => '0'
+
+            ),
+        );
+
+        DB::table('event')->insert($attributes);
+    }
+}
+
 class RolesTableSeeder extends Seeder
 {
 
@@ -32,7 +74,7 @@ class RolesTableSeeder extends Seeder
     {
         DB::table('roles')->delete();
 
-        $roles= array(
+        $roles = array(
             array('name' => 'Participant'),
             array('name' => 'LC'),
             array('name' => 'OC'),
@@ -50,31 +92,31 @@ class SectionsTableSeeder extends Seeder
         DB::table('sections')->delete();
 
         $sections = array(
-            array('name' => 'ESN ATEITH', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'ATEITH'),
-            array('name' => 'ESN AUA ATHENS', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'AUA'),
-            array('name' => 'ESN AUTH', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'AUTH'),
-            array('name' => 'ESN AEGEAN', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'AEGEAN'),
-            array('name' => 'ESN ATHENS AUEB', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'AUEB'),
-            array('name' => 'ESN DUTH', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'DUTH'),
-            array('name' => 'ESN HARO', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'HARO'),
-            array('name' => 'ESN IOANNINA', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'IOANNINA'),
-            array('name' => 'ESN KAPA ATHENS', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'KAPA'),
-            array('name' => 'ESN LARISSA', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'LARISSA'),
-            array('name' => 'ESN NTUA ATHENS', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'NTUA'),
-            array('name' => 'ESN PANTEION', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'PANTEION'),
-            array('name' => 'ESN TEI ATHENS', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'TATH'),
-            array('name' => 'ESN TEI OF CRETE', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'TOC'),
-            array('name' => 'ESN TEI OF PIRAEUS', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'TEIPIR'),
-            array('name' => 'ESN TEI OF WESTERN MACEDONIA', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'TEIWM'),
-            array('name' => 'ESN TUC', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'TUC'),
-            array('name' => 'ESN TEISTE', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'TEISTE'),
-            array('name' => 'ESN UOC', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'UOC'),
-            array('name' => 'ESN UOM THESSALONIKI', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'UOM'),
-            array('name' => 'ESN UOPA', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'UOPA'),
-            array('name' => 'ESN UNIPI', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'UNIPI'),
-            array('name' => 'ESN CYPRUS', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'CYPRUS'),
-            array('name' => 'No ESN Section', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'NOSECTION'),
-            array('name' => 'International Guests (ESNers)', 'reference' => 'TCT'.substr(Carbon::now()->year,2,2).'GUESTS'),
+            array('name' => 'ESN ATEITH', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'ATEITH'),
+            array('name' => 'ESN AUA ATHENS', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'AUA'),
+            array('name' => 'ESN AUTH', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'AUTH'),
+            array('name' => 'ESN AEGEAN', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'AEGEAN'),
+            array('name' => 'ESN ATHENS AUEB', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'AUEB'),
+            array('name' => 'ESN DUTH', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'DUTH'),
+            array('name' => 'ESN HARO', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'HARO'),
+            array('name' => 'ESN IOANNINA', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'IOANNINA'),
+            array('name' => 'ESN KAPA ATHENS', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'KAPA'),
+            array('name' => 'ESN LARISSA', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'LARISSA'),
+            array('name' => 'ESN NTUA ATHENS', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'NTUA'),
+            array('name' => 'ESN PANTEION', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'PANTEION'),
+            array('name' => 'ESN TEI ATHENS', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'TATH'),
+            array('name' => 'ESN TEI OF CRETE', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'TOC'),
+            array('name' => 'ESN TEI OF PIRAEUS', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'TEIPIR'),
+            array('name' => 'ESN TEI OF WESTERN MACEDONIA', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'TEIWM'),
+            array('name' => 'ESN TUC', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'TUC'),
+            array('name' => 'ESN TEISTE', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'TEISTE'),
+            array('name' => 'ESN UOC', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'UOC'),
+            array('name' => 'ESN UOM THESSALONIKI', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'UOM'),
+            array('name' => 'ESN UOPA', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'UOPA'),
+            array('name' => 'ESN UNIPI', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'UNIPI'),
+            array('name' => 'ESN CYPRUS', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'CYPRUS'),
+            array('name' => 'No ESN Section', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'NOSECTION'),
+            array('name' => 'International Guests (ESNers)', 'reference' => 'TCT' . substr(Carbon::now()->year, 2, 2) . 'GUESTS'),
         );
 
         DB::table('sections')->insert($sections);
