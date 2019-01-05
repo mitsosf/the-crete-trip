@@ -22,7 +22,7 @@ Route::get('/faq','HomeController@faq')->name('faq');
 
 Auth::routes();
 //Temp for registrations end
-Route::get('/register','Auth\LoginController@showRegistrationForm')->name('register');
+Route::get('/register','Auth\RegisterController@showRegistrationForm')->name('register');
 //Late
 Route::get('/late','Auth\RegisterController@showRegistrationForm')->name('late');
 
